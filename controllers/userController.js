@@ -69,6 +69,13 @@ export const registerUser = async (req, res) => {
 
     await sendOTP(email, otp);
 
+    // Save OTP to the database
+    await OTPConfirm.create({
+      email,
+      otp,
+      expiresAt: new Date(Date.now() + 2 * 60000), // OTP valid for 2 minutes
+    });
+
     if (user) {
       res.status(201).json({
         _id: user._id,
