@@ -1,9 +1,9 @@
 // config/stripe.js
 import Stripe from "stripe";
+import dotenv from "dotenv";
+dotenv.config();
 
-const stripeSecretKey =
-  process.env.STRIPE_SECRET_KEY ||
-  "sk_test_51RKvnw4CeWZCQIOVAgWw7Ryl2xj2PkAaE5b7uqQ02JLMosTgQsK74V97WhilLtcSS0ueu8OyfFLncamqnvZhKiIy00JQy26Dj2";
+const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
 if (!stripeSecretKey) {
   throw new Error("Missing STRIPE_SECRET_KEY in environment");
 }
@@ -11,4 +11,3 @@ if (!stripeSecretKey) {
 export const stripe = new Stripe(stripeSecretKey, {
   apiVersion: "2022-11-15",
 });
-
