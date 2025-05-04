@@ -8,3 +8,4 @@ yarn-error.log
 .vscode-test
 *.tgz
 *.log
+node_modules/
