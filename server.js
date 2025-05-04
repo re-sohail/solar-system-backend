@@ -28,10 +28,13 @@ if (!mongoUri) {
 }
 
 mongoose
-  .connect(mongoUri)
+  .connect(mongoUri, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    serverSelectionTimeoutMS: 100000,
+  })
   .then(() => console.log("Connected to MongoDB"))
   .catch((err) => console.error("MongoDB connection error:", err));
-
 // Routes
 app.use("/api/users", userRoutes);
 app.use("/api/products", productRoutes);
