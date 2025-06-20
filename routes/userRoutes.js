@@ -21,6 +21,8 @@ router.post("/register", registerUser);
 router.post("/confirm-otp", confirmOTP);
 router.post("/login", loginUser);
 
+// 
+
 // Protected routes
 router.get("/profile", auth, getUserProfile);
 router.put("/profile", auth, updateUserProfile);
